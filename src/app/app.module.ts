@@ -1,3 +1,6 @@
+import { SetLocationPage } from './../pages/set-location/set-location';
+import { PlacePage } from './../pages/place/place';
+import { AddPlacePage } from './../pages/add-place/add-place';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -17,7 +20,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    AddPlacePage,
+    PlacePage,
+    SetLocationPage
   ],
   imports: [
     BrowserModule,
@@ -29,7 +35,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    AddPlacePage,
+    PlacePage,
+    SetLocationPage
   ],
   providers: [
     StatusBar,
