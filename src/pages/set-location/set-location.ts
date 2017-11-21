@@ -1,5 +1,8 @@
+import { Location } from './../../models/location';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { MouseEvent } from '@agm/core';
+
 
 /**
  * Generated class for the SetLocationPage page.
@@ -15,11 +18,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SetLocationPage {
 
+  location: Location;
+  marker: Location;
+
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SetLocationPage');
+    this.location = this.navParams.get('location');
+  }
+
+  setMarker($event: MouseEvent){
+    console.log($event);
+    this.marker = new Location($event.coords.lat, $event.coords.lng);
+  
   }
 
 }
