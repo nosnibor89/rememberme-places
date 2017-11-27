@@ -1,12 +1,11 @@
-
 <ion-header>
   <ion-navbar>
     <ion-buttons end>
-        <button ion-button icon-only [navPush]="addPlacePage" >
-            <ion-icon name="add"></ion-icon>
-        </button>
+      <button ion-button icon-only [navPush]="addPlacePage">
+        <ion-icon name="add"></ion-icon>
+      </button>
     </ion-buttons>
-    
+
     <ion-title>Hello Ionic</ion-title>
   </ion-navbar>
 </ion-header>
@@ -14,6 +13,14 @@
 
 <ion-content padding>
 
-  <h3>Welcome to your first Ionic app!</h3>
+  <ion-card *ngFor="let place of places" (click)="openPlace(place)">
+    <img [src]="place.imageUrl" [alt]="place.title">
+    <ion-card-content>
+      <ion-card-title>
+        {{ place.title }}
+      </ion-card-title>
+      <p>{{ place.description }}</p>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>
