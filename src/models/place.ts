@@ -1,9 +1,9 @@
 import { Location } from './location';
 export class Place {
     constructor(
-        public tittle: string, 
+        public title: string, 
         public description: string,
-        public imagePathOrUrl: string,
+        public imageUrl: string,
         public location: Location) {
         
     }

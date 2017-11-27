@@ -58,21 +58,21 @@
             </button>
           </ion-col>
         </ion-row> -->
-      <ion-row>
+      <ion-row *ngIf="imageUrl">
         <ion-col>
-          <img src="" alt="">
+          <img src="{{imageUrl}}" alt="{{imageUrl}}">
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
-          <button [disabled]="f.invalid || !locationIsSet" ion-button color="secondary" block type="submit">
+          <button [disabled]="f.invalid || !locationIsSet || !imageUrl" ion-button color="secondary" block type="submit">
             Add this place
           </button>
         </ion-col>
       </ion-row>
     </ion-grid>
     <ion-fab right bottom>
-        <button ion-fab icon-only (click)="takePhoto()">
+        <button ion-fab icon-only type="button" (click)="takePhoto()">
             <ion-icon name="camera"></ion-icon>
         </button>
     </ion-fab>
