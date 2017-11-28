@@ -10,9 +10,6 @@ import { AgmCoreModule } from '@agm/core';
   imports: [
     IonicPageModule.forChild(AddPlacePage),
     AgmCoreModule
-    // AgmCoreModule.forRoot({
-    //   apiKey: 'AIzaSyDn8QeO5qpPcsV4XWTwj29MCzjrawyyaDQ'
-    // }),
   ],
   entryComponents: [
     AddPlacePage

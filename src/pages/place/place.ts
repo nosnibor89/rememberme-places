@@ -1,5 +1,7 @@
+import { PlacesService } from './../../services/places.service';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { Place } from '../../models/place';
 
 /**
  * Generated class for the PlacePage page.
@@ -15,11 +17,28 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PlacePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  place: Place;
+  
+  constructor(
+    private viewCtrl: ViewController,
+    public navCtrl: NavController, 
+    private placesService: PlacesService,
+    public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
+  ionViewWillEnter() {
     console.log('ionViewDidLoad PlacePage');
+    console.log(this.navParams.get('place'));
+    this.place = this.navParams.get('place');
+  }
+
+  leave(deleted = false){
+    this.viewCtrl.dismiss({deleted: deleted});
+  }
+
+  delete(){
+    this.placesService.deletePlace(this.place);
+    this.leave(true);
   }
 
 }
