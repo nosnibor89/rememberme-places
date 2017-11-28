@@ -38,7 +38,6 @@ export class AddPlacePage {
     private placesService: PlacesService){}
 
   save(form: NgForm){
-    console.log(form.value);
     this.placesService.addPlace(form.value.title, form.value.description, this.location, this.imageUrl);
     form.reset();
     this.location = this.initialLocation;
@@ -88,7 +87,6 @@ export class AddPlacePage {
       correctOrientation: true,
     })
     .then((pic) => {
-      console.log(pic);
       this.imageUrl = pic;
     })
     .catch((err) => {

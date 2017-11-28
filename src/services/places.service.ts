@@ -1,5 +1,5 @@
+import { Place } from './../models/place';
 import { Location } from './../models/location';
-import { Place } from '../models/place';
 
 
 export class PlacesService {
@@ -13,6 +13,11 @@ export class PlacesService {
 
     loadPlaces(): Place[] {
         return this.places.slice();
+    }
+
+    deletePlace(place: Place){
+        const index = this.places.indexOf(place);
+        this.places.splice(index, 1);
     }
 
 }

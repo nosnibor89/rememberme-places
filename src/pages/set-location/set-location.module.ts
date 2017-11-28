@@ -11,5 +11,9 @@ import { AgmCoreModule } from '@agm/core';
     IonicPageModule.forChild(SetLocationPage),
     AgmCoreModule
   ],
+  entryComponents: [
+    SetLocationPage
+  ]
+
 })
 export class SetLocationPageModule {}
