@@ -19,7 +19,7 @@ export class TabsPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.places = this.placesService.loadPlaces();
+    this.placesService.fetchPlaces();
   }
 
   ionViewWillEnter(){

@@ -9,8 +9,10 @@ import { Geolocation, Geoposition } from '@ionic-native/geolocation';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { ToastController } from 'ionic-angular/components/toast/toast-controller';
 import { Camera } from '@ionic-native/camera';
+import { File, Entry, FileError } from '@ionic-native/file';
 import { PlacesService } from '../../services/places.service';
 
+declare var cordova: any;
 
 @IonicPage()
 @Component({
@@ -33,6 +35,7 @@ export class AddPlacePage {
     private modalCtrl: ModalController, 
     private geolocation: Geolocation,
     private camera: Camera,
+    private file: File,
     private toastCtrl: ToastController,
     private loadingCtrl: LoadingController, 
     private placesService: PlacesService){}
@@ -87,15 +90,38 @@ export class AddPlacePage {
       correctOrientation: true,
     })
     .then((pic) => {
-      this.imageUrl = pic;
+      const name = pic.replace(/^.*[\\\/]/, '');
+      console.log(name);
+      const path = pic.replace(/[^\/]*$/, '');
+      console.log(path);
+      console.log(cordova.file.dataDirectory);
+      // this.imageUrl = pic;
+      this.file.moveFile(path, name, cordova.file.dataDirectory, name)
+      .then((data: Entry) => {
+        this.imageUrl = data.nativeURL;
+        console.log(this.imageUrl);
+        this.camera.cleanup();
+        // this.file.removeFile(path, name); // Camara does the same
+      })
+      .catch((err: FileError) => {
+        this.imageUrl = '';
+        
+        const toast = this.toastCtrl.create({
+          message: err.message,
+          duration: 2500
+        });
+        toast.present();
+
+        this.camera.cleanup();
+      });
     })
     .catch((err) => {
-      console.log(err);
       const toast = this.toastCtrl.create({
         duration: 2500,
         message: 'Could not take picture'
       });
       toast.present();
+      this.camera.cleanup();
     })
   }
 

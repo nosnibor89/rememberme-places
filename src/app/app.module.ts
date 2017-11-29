@@ -1,7 +1,5 @@
 import { SetLocationPageModule } from './../pages/set-location/set-location.module';
-// import { SetLocationPage } from './../pages/set-location/set-location';
-// import { PlacePage } from './../pages/place/place';
-// import { AddPlacePage } from './../pages/add-place/add-place';
+
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -14,6 +12,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AgmCoreModule } from '@agm/core';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Camera } from '@ionic-native/camera';
+import { File } from '@ionic-native/file';
+import { IonicStorageModule } from '@ionic/storage';
+
 import { AddPlacePageModule } from '../pages/add-place/add-place.module';
 import { PlacePageModule } from '../pages/place/place.module';
 import { PlacesService } from '../services/places.service';
@@ -30,6 +31,7 @@ import { PlacesService } from '../services/places.service';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDn8QeO5qpPcsV4XWTwj29MCzjrawyyaDQ'
     }),
@@ -50,6 +52,7 @@ import { PlacesService } from '../services/places.service';
     SplashScreen,
     Geolocation,
     Camera,
+    File,
     PlacesService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
